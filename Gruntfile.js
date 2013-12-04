@@ -87,7 +87,7 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
-                    port: 9001,
+                    port: 9009,
                     middleware: function (connect) {
                         return [
                             lrSnippet,

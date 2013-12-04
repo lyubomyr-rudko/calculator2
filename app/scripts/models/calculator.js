@@ -119,17 +119,7 @@ define([
             var value1 = this.getFirstParamValue(),
                 value2 = this.getSecondParamValue();;
 
-            // if (this.params.second) {
-            //     value2 = this.params.second.join('');
-            // }
-
-            // if (this.params.first instanceof Array) {
-            //     value1 = this.params.first.join('');
-            // } else {
-            //     value1 = this.params.first;
-            // }
-
-            return value2 || value1 || '0';
+            return value2 || value1 || 0;
         },
 
         actions: {
