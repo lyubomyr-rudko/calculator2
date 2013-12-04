@@ -1,0 +1,29 @@
+.calculator {
+    width: 320px;
+    margin: 10px auto;
+}
+
+.calculator .display-cnt {
+    padding: 2px;
+}
+
+.calculator .display {
+    font-size: 25px;
+    margin-bottom: 5px;
+    display: inline;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.calculator .row {
+    margin-top: 5px;
+}
+
+.calculator a:focus {
+    outline: 0;
+}
+
+.calculator a.btn span {
+    width: 50px;
+    display: inline-block;
+}
