@@ -5,6 +5,10 @@
 
 .calculator .display-cnt {
     padding: 2px;
+    width: 320px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
 }
 
 .calculator .display {
@@ -13,6 +17,8 @@
     display: inline;
     text-align: right;
     margin-right: 5px;
+    position: absolute;
+    right: 0;
 }
 
 .calculator .row {
