@@ -30,11 +30,9 @@ define([
                 this.params.second = [];
                 if (this.action) {
                     this.currentParam = this.params.second;
-                    //this.params.push([val]);
                 } else {
                     this.params.first = [];
                     this.currentParam = this.params.first;
-                    // this.params = [[val]];
                 }
             }
 
@@ -73,15 +71,15 @@ define([
         },
 
         performAction: function () {
-            var value1,
-                value2 = parseFloat(this.params.second.join('')),
+            var value1 = this.getFirstParamValue(true),
+                value2 = this.getSecondParamValue(true), //parseFloat(this.params.second.join('')),
                 res = 0;
 
-            if (this.params.first instanceof Array) {
-                value1 = parseFloat(this.params.first.join(''));
-            } else {
-                value1 = this.params.first;
-            }
+            // if (this.params.first instanceof Array) {
+            //     value1 = parseFloat(this.params.first.join(''));
+            // } else {
+            //     value1 = this.params.first;
+            // }
 
             if (this.action === this.actions.add) {
                 res = value1 + value2;
@@ -99,19 +97,37 @@ define([
             this.currentParam = this.params.first;
         },
 
-        getOutput: function () {
-            var value1,
-                value2;
-
-            if (this.params.second) {
-                value2 = this.params.second.join('');
-            }
+        getFirstParamValue: function (parsed) {
+            var res;
 
             if (this.params.first instanceof Array) {
-                value1 = this.params.first.join('');
+                res = this.params.first.join('');
             } else {
-                value1 = this.params.first;
+                res = this.params.first;
             }
+
+            return parsed ? parseFloat(res) : res;
+        },
+
+        getSecondParamValue: function (parsed) {
+            var res = this.params.second.join('');
+
+            return parsed ? parseFloat(res) : res;
+        },
+
+        getOutput: function () {
+            var value1 = this.getFirstParamValue(),
+                value2 = this.getSecondParamValue();;
+
+            // if (this.params.second) {
+            //     value2 = this.params.second.join('');
+            // }
+
+            // if (this.params.first instanceof Array) {
+            //     value1 = this.params.first.join('');
+            // } else {
+            //     value1 = this.params.first;
+            // }
 
             return value2 || value1 || '0';
         },
