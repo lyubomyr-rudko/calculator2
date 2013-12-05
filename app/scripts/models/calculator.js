@@ -3,8 +3,9 @@
 define([
     'underscore',
     'backbone',
+    'models/action',
     'models/params'
-], function (_, Backbone, ParamsModel) {
+], function (_, Backbone, ActionModel, ParamsModel) {
     'use strict';
 
     var CalculatorModel = Backbone.Model.extend({
@@ -25,14 +26,13 @@ define([
                     return;
                 }
             } else {
-                //if carrent param is not an array of digits - it is a result of previouce computation
-
                 //if user starts from dot - add a zero before it
                 if (val === '.') {
                     val = '0.';
                 }
 
-                //start second parameter from scratch
+                //if carrent param is not an array of digits - it is a result of previouce computation
+                //clear second parameter before puting digits into it
                 this.params.set('second',  []);
                 //if there is an action to perform - multiple operations done, use second parameter, keep the first
                 if (this.action) {
@@ -81,15 +81,7 @@ define([
                 res = 0;
 
             //perfomr action
-            if (this.action === this.actions.add) {
-                res = value1 + value2;
-            } else if (this.action === this.actions.substruct) {
-                res = value1 - value2;
-            } else if (this.action === this.actions.multiply) {
-                res = value1 * value2;
-            } else if (this.action === this.actions.divide) {
-                res = value1 / value2;
-            }
+            res = this.action.perform(value1, value2);
             //reset both params
             this.reset();
             //save result as a first param
@@ -106,12 +98,12 @@ define([
         },
 
         actions: {
-            equal: 'equal',
-            ce: 'ce', //clear button value
-            add: 'add',
-            substruct: 'substruct',
-            multiply: 'multiply',
-            divide: 'divide'
+            equal: new ActionModel(),
+            ce: new ActionModel(),
+            add: new ActionModel({ actionFn: function (a, b) { return a + b; } }),
+            substruct: new ActionModel({ actionFn: function (a, b) { return a - b; } }),
+            multiply: new ActionModel({ actionFn: function (a, b) { return a * b; } }),
+            divide: new ActionModel({ actionFn: function (a, b) { return a / b; } })
         }
     });
 
