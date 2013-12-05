@@ -7,7 +7,8 @@ require.config({
         bootstrap: 'scripts/vendor/bootstrap',
         mocha: 'lib/mocha/mocha',
         chai: 'lib/chai',
-        calc: 'scripts/models/calculator'
+        models: 'scripts/models/'
+        // models:
     },
     shim: {
         'underscore': {

@@ -3,7 +3,7 @@
 define(function(require) {
     'use strict';
 
-    var Calculator = require('calc'),
+    var Calculator = require('models/calculator'),
         chai = require('chai'),
         expect = chai.expect;
 
@@ -20,7 +20,7 @@ define(function(require) {
                 calc.addAction(calc.actions.equal);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(25);
+                expect(res).to.equal(25);
             });
 
             it('should multiply two numbers', function() {
@@ -34,7 +34,7 @@ define(function(require) {
                 calc.addAction(calc.actions.equal);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(66);
+                expect(res).to.equal(66);
             });
 
             it('should substruct two numbers', function() {
@@ -48,7 +48,7 @@ define(function(require) {
                 calc.addAction(calc.actions.equal);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(52);
+                expect(res).to.equal(52);
             });
 
             it('should divide two numbers', function() {
@@ -62,7 +62,7 @@ define(function(require) {
                 calc.addAction(calc.actions.equal);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(22);
+                expect(res).to.equal(22);
             });
 
             it('CE should clear current value and action', function() {
@@ -74,7 +74,7 @@ define(function(require) {
                 calc.addAction(calc.actions.ce);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(0);
+                expect(res).to.equal(0);
             });
 
             it('should perform add, substruct, multiply and divide operations in a row', function() {
@@ -94,7 +94,7 @@ define(function(require) {
                 calc.addAction(calc.actions.equal);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(22);
+                expect(res).to.equal(22);
             });
 
             it('should not allow several dots signs', function() {
@@ -108,7 +108,7 @@ define(function(require) {
                 calc.addValue(2);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal('2.22');
+                expect(res).to.equal('2.22');
             });
 
             it('should not allow several zeros entered when no other digit is enetered before', function() {
@@ -121,7 +121,7 @@ define(function(require) {
                 calc.addValue(0);
                 res = calc.getOutput();
 
-                chai.expect(res).to.equal(0);
+                expect(res).to.equal(0);
             });
         });
     });
