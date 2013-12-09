@@ -5,7 +5,7 @@ define([
     'underscore',
     'backbone',
     'templates',
-    '../models/calculator'
+    'models/calculator'
 ], function ($, _, Backbone, JST, Calculator) {
     'use strict';
     var calc = new Calculator(),

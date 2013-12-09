@@ -9,3 +9,5 @@ Simple Calculator application, implemented using RequireJs, BackboneJs and some 
 1. grunt server
 
 For unit-test runner: http://localhost:9009/
+
+test
