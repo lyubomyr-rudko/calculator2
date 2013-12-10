@@ -11,3 +11,4 @@ Simple Calculator application, implemented using RequireJs, BackboneJs and some 
 For unit-test runner: http://localhost:9009/
 
 test
+test2
